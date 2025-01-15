@@ -51,9 +51,9 @@ public class Main {
             System.out.println("6. Add a product");
             System.out.println("7. Update a product");
             System.out.println("8. Delete a product");
-            System.out.println("9. Filter Movies by genre");
-            System.out.println("10. Show clients who have movies from a specific director");
-            System.out.println("11. View movies ordered for a client");
+            System.out.println("9. Filter Characters by place");
+            System.out.println("10. Show characters who have products from a specific region");
+            System.out.println("11. View products ordered for a character");
             System.out.println("12. Exit");
             System.out.print("Enter your choice: ");
 
