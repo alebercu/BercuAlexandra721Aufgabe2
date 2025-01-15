@@ -5,6 +5,7 @@ import org.example.Models.Product;
 import org.example.Repository.IRepository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -155,6 +156,20 @@ public class Controller {
                         .stream()
                         .anyMatch(p -> p.getRegion().equals(region)))
                 .collect(Collectors.toList());
+    }
+
+    public List<Product> getSortedProductsForCharacter(int characterId, boolean ascending) {
+        Characters character = charrepository.read(characterId);
+
+        if (character == null){
+            throw new IllegalArgumentException("Character cannot be null");
+        }
+
+        return character.getProducts()
+                .stream()
+                .sorted(ascending ? Comparator.comparing(Product::getPrice) : Comparator.comparing(Product::getPrice).reversed())
+                .collect(Collectors.toList());
+
     }
 
 
