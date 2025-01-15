@@ -213,9 +213,8 @@ public class Main {
                     break;
 
                 case 11:
-                    displaySortedProductsForClient(scanner, controller);
+                    displaySortedProductsForCharacter(scanner, controller);
                     break;
-
 
 
                 case 12:
@@ -228,9 +227,9 @@ public class Main {
         }
     }
 
-    public static void displaySortedProductsForClient(Scanner scanner, Controller controller) {
-        System.out.print("Enter the client ID: ");
-        int clientId = scanner.nextInt();
+    public static void displaySortedProductsForCharacter(Scanner scanner, Controller controller) {
+        System.out.print("Enter the character ID: ");
+        int cId = scanner.nextInt();
         scanner.nextLine(); // Consume leftover newline
 
         System.out.print("Sort mode (asc/desc): ");
@@ -239,12 +238,12 @@ public class Main {
         boolean ascending = sortMode.equals("asc");
 
         try {
-            List<Movie> sortedMovies = controller.getSortedMoviesForClient(clientId, ascending);
-            if (sortedMovies.isEmpty()) {
-                System.out.println("The client has no movies.");
+            List<Product> sortedP = controller.getSortedProductsForCharacter(cId, ascending);
+            if (sortedP.isEmpty()) {
+                System.out.println("The character has no products.");
             } else {
                 System.out.println("Sorted Movies:");
-                sortedMovies.forEach(System.out::println);
+                sortedP.forEach(System.out::println);
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
