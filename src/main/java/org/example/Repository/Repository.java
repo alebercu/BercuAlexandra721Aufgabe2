@@ -1,5 +1,8 @@
 package org.example.Repository;
 
+import org.example.Models.Characters;
+import org.example.Models.Product;
+
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 //import org.example.ex2.Models.Client;
@@ -12,16 +15,16 @@ public class Repository<T> implements IRepository<T> {
     // Create a new object in the repository
     @Override
     public void create(T obj) {
-        // Check if the object is an instance of Client or Product and set an ID
+
         int id = idCounter.getAndIncrement();
 
-        // If the object is of type Client
-        if (obj instanceof Client) {
-            ((Client) obj).setId(id);
+
+        if (obj instanceof Characters) {
+            ((Characters) obj).setId(id);
         }
         // If the object is of type Product
-        else if (obj instanceof Movie) {
-            ((Movie) obj).setId(id);
+         if (obj instanceof Product) {
+            ((Product) obj).setId(id);
         }
 
         map.putIfAbsent(id, obj);

@@ -2,13 +2,13 @@ package org.example.Models;
 
 import java.util.List;
 
-public class Character {
+public class Characters {
     int id;
     String name;
     String place;
     List<Product> products;
 
-    public Character(int id, String name, String place, List<Product> products) {
+    public Characters(int id, String name, String place, List<Product> products) {
         this.id = id;
         this.name = name;
         this.place = place;
