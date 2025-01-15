@@ -7,6 +7,7 @@ import org.example.Repository.IRepository;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Controller {
     public final IRepository<Characters> charrepository;
@@ -144,6 +145,16 @@ public class Controller {
             System.out.println("No characters found");
         }
         return characters;
+    }
+
+
+    public List<Characters> sortCharactersByProductRegion(String region){
+        return charrepository.getAll()
+                .stream()
+                .filter(c -> c.getProducts()
+                        .stream()
+                        .anyMatch(p -> p.getRegion().equals(region)))
+                .collect(Collectors.toList());
     }
 
 
