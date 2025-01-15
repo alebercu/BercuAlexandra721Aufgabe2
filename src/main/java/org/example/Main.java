@@ -149,72 +149,74 @@ public class Main {
                     controller.listAllCharacterss();
                     break;
                 case 6:
-                    System.out.print("Enter movie Id: ");
+                    System.out.print("Enter product Id: ");
                     int productId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
-                    System.out.print("Enter movie title: ");
+                    System.out.print("Enter product name: ");
                     String productName = scanner.nextLine();
-                    System.out.print("Enter movie director: ");
-                    String directorName = scanner.nextLine();
-                    System.out.print("Enter movie genere: ");
-                    String genre = scanner.nextLine();
-                    System.out.print("Enter movie price: ");
+                    System.out.print("Enter product price: ");
                     int productPrice = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
-                    Movie newMovie = new Movie(directorName,productId,productName,genre,productPrice);
-                    controller.addMovie(newMovie);
-                    System.out.println("Movie added.");
+                    System.out.print("Enter product region: ");
+                    String productSeason = scanner.nextLine();
+                    Product newProduct = new Product(productId, productName, productPrice, productSeason);
+                    controller.addProduct(newProduct);
+                    System.out.println("Product added.");
                     break;
 
                 case 7:
-                    System.out.print("Enter movie ID to update: ");
+                    System.out.print("Enter product ID to update: ");
                     int updateProductId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
-                    Movie productToUpdate = controller.getMovie(updateProductId);
+                    Product productToUpdate = controller.getProduct(updateProductId);
                     if (productToUpdate != null) {
                         System.out.print("Enter new name: ");
-                        productToUpdate.setTitle(scanner.nextLine());
+                        productToUpdate.setName(scanner.nextLine());
                         System.out.print("Enter new price: ");
                         productToUpdate.setPrice(scanner.nextInt());
                         scanner.nextLine(); // Consume newline
-                        controller.updateMovie(productToUpdate);
-                        System.out.println("Movie updated.");
+                        System.out.print("Enter new region: ");
+                        productToUpdate.setRegion(scanner.nextLine());
+                        controller.updateProduct(productToUpdate);
+                        System.out.println("Product updated.");
                     } else {
                         System.out.println("Product not found.");
                     }
                     break;
                 case 8:
-                    System.out.print("Enter movie ID to delete: ");
+                    System.out.print("Enter product ID to delete: ");
                     int deleteProductId = scanner.nextInt();
                     scanner.nextLine(); // Consume newline
-                    Movie productToDelete = controller.getMovie(deleteProductId);
+                    Product productToDelete = controller.getProduct(deleteProductId);
                     if (productToDelete != null) {
-                        controller.deleteMovie(productToDelete);
+                        controller.deleteProduct(productToDelete);
                         System.out.println("Product deleted.");
                     } else {
                         System.out.println("Product not found.");
                     }
                     break;
                 case 9:
-                    System.out.print("Enter genre to filter by: ");
-                    String g = scanner.nextLine();
-                    controller.filterMoviesByGenre(g).forEach(System.out::println);
+                    System.out.print("Enter place to filter by: ");
+                    String place = scanner.nextLine();
+                    controller.filterCharByPlace(place).forEach(System.out::println);
                     break;
                 case 10:
-                    System.out.print("Enter the director to see customers who bought films from that director: ");
-                    String d = scanner.nextLine();
-                    List<Client> clientsWhoBoughtFilm = controller.sortClientsByDirectorMovies(d);
-                    if (clientsWhoBoughtFilm.isEmpty()) {
-                        System.out.println("No clients found who bought films from " + d);
+                    System.out.print("Enter region to see characters that bought products from that region: ");
+                    String region = scanner.nextLine();
+                    List<Characters> ch = controller.sortCharactersByProductRegion(region);
+                    if (ch.isEmpty()) {
+                        System.out.println("No characters found who bought products from " + region);
                     } else {
-                        System.out.println("Customers who bought films from " + d + " are:");
-                        clientsWhoBoughtFilm.forEach(System.out::println);
+                        System.out.println("Characters who bought products from " + region);
+                        ch.forEach(System.out::println);
                     }
                     break;
 
                 case 11:
                     displaySortedProductsForClient(scanner, controller);
                     break;
+
+
 
                 case 12:
                     System.out.println("Exiting...");
