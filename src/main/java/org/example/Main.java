@@ -71,7 +71,7 @@ public class Main {
                     System.out.print("Enter character place: ");
                     String cPlace = scanner.nextLine();
 
-                    System.out.println("Enter the product IDs to assign to this character (comma-separated): ");
+                    System.out.println("Enter the product IDs to assign to this character (comma - separated): ");
                     String prodIdsInput = scanner.nextLine();
                     List<Product> assignedproducts = new ArrayList<>();
 
